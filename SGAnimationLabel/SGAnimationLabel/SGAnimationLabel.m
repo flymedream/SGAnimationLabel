@@ -18,6 +18,8 @@
         self.speed = 0.3;
         [self initAnimationLabel];
         [self addNotification];
+        self.isAccessibilityElement = YES;
+        self.accessibilityLabel = self.animationLabel.text;
     }
     return self;
 }
@@ -39,6 +41,8 @@
 - (void)setText:(NSString *)text{
     self.animationLabel.text = text;
     [self.animationLabel sizeToFit];
+    
+    self.accessibilityLabel = [self.animationLabel.text stringByAppendingString:@"。占位文本"];
 }
 - (void)setTextColor:(UIColor *)textColor{
     self.animationLabel.textColor = textColor;
